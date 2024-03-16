@@ -4,7 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 const ProtectedRoute = () => {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) {
+  if (isLoading) {//so that if we refresh then the page still remains to same page link
     return null;
   }
 

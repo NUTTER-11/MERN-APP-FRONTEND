@@ -24,11 +24,11 @@ const ImageSection = () => {
         </FormDescription>
       </div>
 
-      <div className="flex flex-col gap-8 md:w-[50%]">
+      <div className="flex flex-col gap-8 md:w-[50%]"> 
         {existingImageUrl && (
           <AspectRatio ratio={16 / 9}>
             <img
-              src={existingImageUrl}
+              src={existingImageUrl}//this url gonna come from the form where we had added the image
               className="rounded-md object-cover h-full w-full"
             />
           </AspectRatio>

@@ -37,7 +37,7 @@ export const ORDER_STATUS: OrderStatusInfo[] = [
   
     const { orders } = useGetMyRestaurantOrders();
   
-    const isEditing = !!restaurant;
+    const isEditing = !!restaurant;//if there is a resturant  then editing is true
   
     return (
       <Tabs defaultValue="orders">

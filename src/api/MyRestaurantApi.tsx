@@ -78,7 +78,7 @@ export const useUpdateMyRestaurant = () => {
 
   const updateRestaurantRequest = async (
     restaurantFormData: FormData
-  ): Promise<Restaurant> => {
+  ): Promise<Restaurant> => {//defines return  type
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
@@ -160,7 +160,7 @@ export const useUpdateMyRestaurantOrder = () => {
       {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,//template string
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ status: updateStatusOrderRequest.status }),
