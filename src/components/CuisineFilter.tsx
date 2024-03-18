@@ -28,7 +28,7 @@ const CuisineFilter = ({
     onChange(newCuisinesList);
   };
 
-  const handleCuisinesReset = () => onChange([]);
+  const handleCuisinesReset = () => onChange([]);// this gonna pass a new array which gonna have selected cusines in it
 
   return (
     <>

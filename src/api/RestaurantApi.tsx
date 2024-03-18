@@ -29,10 +29,11 @@ export const useGetRestaurant = (restaurantId?: string) => {
 };
 
 export const useSearchRestaurants = (
-  searchState: SearchState,
+  searchState: SearchState,//we will recive new search state object to our hook
   city?: string
 ) => {
   const createSearchRequest = async (): Promise<RestaurantSearchResponse> => {
+    //as we pass the city as path parameter and other as query so we need to handle the situation
     const params = new URLSearchParams();
     params.set("searchQuery", searchState.searchQuery);
     params.set("page", searchState.page.toString());
@@ -40,7 +41,7 @@ export const useSearchRestaurants = (
     params.set("sortOption", searchState.sortOption);
 
     const response = await fetch(
-      `${API_BASE_URL}/api/restaurant/search/${city}?${params.toString()}`
+      `${API_BASE_URL}/api/restaurant/search/${city}?${params.toString()}`//? represents the start of query param
     );
 
     if (!response.ok) {
@@ -51,13 +52,14 @@ export const useSearchRestaurants = (
   };
 
   const { data: results, isLoading } = useQuery(
-    ["searchRestaurants", searchState],
+    ["searchRestaurants",// it is the name of the query
+     searchState],// we are teling anytime the query value has changed we hav eto again run this query again
     createSearchRequest,
     { enabled: !!city }
   );
 
   return {
-    results,
+    results,// gonna give the results back that are going to be re rendered
     isLoading,
   };
 };

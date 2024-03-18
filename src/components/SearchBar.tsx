@@ -26,10 +26,10 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      searchQuery,
+      searchQuery, 
     },
   });
-
+//for updating the search bar when we recieve the search queryor we can say it will resert the search query
   useEffect(() => {
     form.reset({ searchQuery });
   }, [form, searchQuery]);

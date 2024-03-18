@@ -8,13 +8,14 @@ import {
   } from "./ui/pagination";
   
   type Props = {
-    page: number;
-    pages: number;
-    onPageChange: (page: number) => void;
+    page: number;//current page no this gonna come from parent where we gona store the state
+    pages: number;//total pages that exist
+    onPageChange: (page: number) => void;//aby time page no is changed this function is going to be called
   };
   
-  const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
+  const PaginationSelector = ({ page, pages, onPageChange }: Props) => {// all the prop types are destructured in the compnent
     const pageNumbers = [];
+    //generating an array of page no
     for (let i = 1; i <= pages; i++) {
       pageNumbers.push(i);
     }
@@ -42,7 +43,7 @@ import {
               </PaginationLink>
             </PaginationItem>
           ))}
-  
+  {/* this function will make thw next button display id the page  is not equal to the last page*/}
           {page !== pageNumbers.length && (
             <PaginationItem>
               <PaginationNext href="#" onClick={() => onPageChange(page + 1)} />

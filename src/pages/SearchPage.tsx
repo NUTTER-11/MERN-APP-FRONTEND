@@ -8,6 +8,7 @@ import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
+//
 export type SearchState = {
   searchQuery: string;
   page: number;
@@ -22,11 +23,11 @@ const SearchPage = () => {
     page: 1,
     selectedCuisines: [],
     sortOption: "bestMatch",
-  });
+  });// these are the default value whenever we refresh the page for first time as usestate hook is used
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  const { results, isLoading } = useSearchRestaurants(searchState, city);
+  const { results, isLoading } = useSearchRestaurants(searchState, city);//so that the query past options can get applied to the backend search
 
   const setSortOption = (sortOption: string) => {
     setSearchState((prevState) => ({
@@ -51,18 +52,20 @@ const SearchPage = () => {
     }));
   };
 
+
+  // this function will run after the first search , even the placeholder value of  the search bar will be changed
   const setSearchQuery = (searchFormData: SearchForm) => {
     setSearchState((prevState) => ({
       ...prevState,
-      searchQuery: searchFormData.searchQuery,
+      searchQuery: searchFormData.searchQuery,//making the search bar  filled after recopying the previous state
       page: 1,
     }));
   };
-
+// for reseting the search bar
   const resetSearch = () => {
     setSearchState((prevState) => ({
-      ...prevState,
-      searchQuery: "",
+      ...prevState,//we are copying the previous state
+      searchQuery: "",//making the search bar empty as the user sonot want anything after reset button
       page: 1,
     }));
   };
@@ -105,6 +108,7 @@ const SearchPage = () => {
         {results.data.map((restaurant) => (
           <SearchResultCard restaurant={restaurant} />
         ))}
+        
         <PaginationSelector
           page={results.pagination.page}
           pages={results.pagination.pages}
