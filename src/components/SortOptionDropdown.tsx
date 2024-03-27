@@ -10,8 +10,7 @@ type Props = {
   onChange: (value: string) => void;
   sortOption: string;
 };
-//array for the dropdown , label is seen by the user and value is logic for the code value is going to be send to backend
-//these gonna use the values from the modals from the backend which gonna be delivery price and estimated deliveryprice
+
 const SORT_OPTIONS = [
   {
     label: "Best match",
